@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-27",
+  "policy": "공식 매뉴얼에서 직접 확인한 값만 verified:true 로 쓴다. 확인 못 한 칸은 null(화면에서 «확인 중»). 출처 칸은 필수.",
+  "generalFacts": [
+    {
+      "text": "올웨더는 3PMSF(눈꽃 산 마크) 인증을 받은 타이어만 가리킨다. 인증 없는 «올시즌(사계절)» 과 다르다.",
+      "source": "국내 보도(오토뷰·오토로그 올웨더 비교, 2026-10 확인)",
+      "grade": "보도"
+    },
+    {
+      "text": "타이어는 주행거리가 적어도 5년 후 점검, 제조사 안내 기준 6년 교체 권장, 10년이면 상한이다.",
+      "source": "미쉐린·콘티넨탈 북미 기술 공지, 국내 기사(2026-10-02 확인)",
+      "grade": "보도"
+    },
+    {
+      "text": "마모 한계 홈 깊이는 1.6mm(법적 기준)이고 평균 마모수명은 4만~6만km 로 알려져 있다. 전기차의 실제 마모는 더 빠를 수 있어 어림값이다.",
+      "source": "국내 기사(2026-10-02 확인)",
+      "grade": "보도"
+    },
+    {
+      "text": "권장 공기압은 차량마다 다르다. 운전석 문 안쪽 라벨 또는 해당 차량 매뉴얼의 값을 따른다.",
+      "source": "일반 안내",
+      "grade": "일반"
+    },
+    {
+      "text": "구동 방식(사륜·후륜·전륜)은 출발·가속·등판에 영향을 주지만 제동과 코너링은 노면에 닿는 타이어의 접지력이 정한다. 그래서 사륜구동이라는 이유로 타이어 등급을 낮추지 않는다.",
+      "source": "차량 역학 일반 원리 · 오너 판단(2026-10-27) — 제동·눈길 접지 수치는 직접 확인한 시험 자료가 없어 싣지 않는다",
+      "grade": "일반"
+    }
+  ],
+  "models": [
+    {
+      "id": "model3",
+      "name": "Model 3",
+      "variants": [
+        {
+          "wheel": "18인치",
+          "tire": "235/45R18",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름)",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/model3/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "19인치",
+          "tire": "235/40R19",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름)",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/model3/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "20인치",
+          "tire": "235/35R20",
+          "tireRear": "275/30R20",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름)",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/model3/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        }
+      ],
+      "manual": {
+        "edition": "2024+ 판",
+        "version": "한국어, 소프트웨어 2026.32 표기(Model 3 기준)"
+      }
+    },
+    {
+      "id": "modelY",
+      "name": "Model Y",
+      "variants": [
+        {
+          "wheel": "19인치",
+          "tire": "255/45R19",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름)",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/modely/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "19인치(6인승)",
+          "tire": "255/45R19",
+          "tireRear": "275/45R19",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름)",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/modely/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "20인치",
+          "tire": "255/40R20",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름)",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/modely/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "20인치(6인승)",
+          "tire": "255/40R20",
+          "tireRear": "275/40R20",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름)",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/modely/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        }
+      ],
+      "manual": {
+        "edition": "2025+ 판",
+        "version": "한국어"
+      }
+    },
+    {
+      "id": "modelS",
+      "name": "Model S",
+      "variants": [
+        {
+          "wheel": "19인치 사계절",
+          "tire": "255/45R19",
+          "tireRear": "285/40R19",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름) · 한국 포함 지역 기준",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/models/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "21인치 사계절",
+          "tire": "265/35R21",
+          "tireRear": "295/30R21",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름) · 한국 포함 지역 기준",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/models/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "21인치 하절기",
+          "tire": "265/35ZR21",
+          "tireRear": "295/30ZR21",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름) · 한국 포함 지역 기준",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/models/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        }
+      ],
+      "manual": {
+        "edition": "2021+ 판",
+        "version": "한국어"
+      }
+    },
+    {
+      "id": "modelX",
+      "name": "Model X",
+      "variants": [
+        {
+          "wheel": "20인치 올시즌",
+          "tire": "265/45R20",
+          "tireRear": "275/45R20",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름) · 한국 포함 지역 기준",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/modelx/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "22인치 사계절",
+          "tire": "265/35R22",
+          "tireRear": "285/35R22",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름) · 한국 포함 지역 기준",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/modelx/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        },
+        {
+          "wheel": "22인치 하절기",
+          "tire": "265/35R22",
+          "tireRear": "285/35R22",
+          "pressure_cold": null,
+          "pressure_unit": null,
+          "note": "매뉴얼에 숫자 없음 — 도어 필러 «타이어 및 적재 정보» 라벨 참조(타이어 유형별로 다름) · 한국 포함 지역 기준",
+          "source": "Tesla 공식 한국어 사용자 매뉴얼 «휠 및 타이어 > 타이어 제원(공장)»",
+          "sourceUrl": "https://www.tesla.com/ownersmanual/modelx/ko_kr/GUID-FDDB10EF-FFA9-46EB-B8CC-03614AE92B6B.html",
+          "checkedAt": "2026-10-27",
+          "verified": true
+        }
+      ],
+      "manual": {
+        "edition": "2021+ 판",
+        "version": "한국어"
+      }
+    }
+  ],
+  "todo": "2026-10-27: 일반 웨일(전용 포트·임시 프로필)로 tesla.com 한국어 매뉴얼을 열어 4개 모델의 순정 타이어 규격을 채움. 공기압은 매뉴얼에 숫자가 없고 도어 필러 라벨 참조만 안내 — null 유지(note). 연식별 이전 판(Model 3 2017-2023 등)은 미대조."
+}

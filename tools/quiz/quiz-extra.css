@@ -1,0 +1,13 @@
+/* quiz.css 가 아직 다루지 않는 자리의 최소 규칙(공유 줄·목록 기호). 디자인 작업자가 quiz.css 에 .share-* 를 넣으면 이 파일의 공유 부분은 지운다. */
+.qz ol.qz-reasons { list-style: none; padding: 0; }
+.qz .qz-dots, .qz .qz-opts { list-style: none; padding: 0; margin: 0; }
+.qz-caution > span, .qz-why > span { min-width: 0; }
+.qz-caution b, .qz-why b { display: inline; white-space: nowrap; }
+.qz-caution .qz-ico, .qz-why .qz-ico { flex: none; }
+.qz .share-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.qz .share-row > .btn, .qz .share-row > a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px; margin: 0; font: inherit; font-weight: 700; color: var(--ink); background: transparent; border: 1px solid var(--ink); border-radius: var(--radius); text-decoration: none; cursor: pointer; }
+.qz .share-row > .share-native, .qz .share-row > .share-copy { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+.qz .share-field { width: 100%; min-height: 44px; padding: 0 12px; font: inherit; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+.qz .share-kakao, .qz .share-status { margin: 8px 0 0; font-size: 15px; color: var(--meta); overflow-wrap: anywhere; }
+.tires summary { min-height: 44px; padding: 10px 0; box-sizing: border-box; cursor: pointer; }
+.qz h2[tabindex="-1"]:focus { outline: none; }

@@ -1,0 +1,11 @@
+.vin-tool .vin-in{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:1.25rem;letter-spacing:.06em;padding:.85rem .9rem;border:2px solid currentColor;border-radius:8px;background:transparent;color:inherit}
+.vin-tool .vin-btns{display:flex;gap:.6rem;margin:.7rem 0}
+.vin-tool .vin-btns button{font:inherit;font-size:1.05rem;padding:.7rem 1.2rem;min-height:48px;border-radius:8px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer}
+.vin-tool .vin-btns button[type=submit]{flex:1;font-weight:700}
+.vin-tool .vin-errs{margin:.6rem 0;padding-left:1.2rem;font-weight:600}
+.vin-tool .vin-sheet{width:100%;border-collapse:collapse;margin:.8rem 0}
+.vin-tool .vin-sheet th,.vin-tool .vin-sheet td{text-align:left;padding:.55rem .6rem;border-bottom:1px solid rgba(128,128,128,.45);vertical-align:top}
+.vin-tool .vin-sheet th{width:7.5em;font-weight:600;white-space:nowrap}
+.vin-tool .vin-sheet em{font-style:normal;opacity:.65;margin-left:.5em;font-size:.9em}
+.vin-tool .vin-next{display:block;margin:1rem 0;padding:.9rem 1rem;border:2px solid currentColor;border-radius:8px;font-weight:700;text-decoration:none;color:inherit}
+.vin-tool .vin-note{font-size:.92rem;opacity:.85}

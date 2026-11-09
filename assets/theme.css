@@ -1,0 +1,15 @@
+/* 방향 A 에디토리얼 — 종이톤 바탕·먹색 활자·와인 포인트 1색, 명조 제목, 겹줄 구분선. 변수만 덮어쓴다(반응형 변수 --fs·--pad·--w-lnb 는 건드리지 않는다). */
+:root {
+  --paper: #f3f2ef; --sheet: #f9f8f6; --ink: #1c1a19; --body: #38352f; --meta: #615c55; --rule: #cdc8c0; --chip: #e9e6e0;
+  --accent: #7a1d33; --on-accent: #fff;
+  --font-head: "Noto Serif KR", "Nanum Myeongjo", "AppleMyungjo", "Apple SD Gothic Neo", serif;
+  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --radius: 2px; --bar-border: 3px double var(--ink); --card-border: 1px solid var(--rule); --card-top: 2px solid var(--ink);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #1b1a19; --sheet: #232120; --ink: #f1eee9; --body: #d4d0c9; --meta: #a39e96; --rule: #403c38; --chip: #2e2b28; --accent: #e58fa5; --on-accent: #1b1a19; color-scheme: dark; }
+}
+/* 신문 지면 느낌: 카드 면·옆 테두리를 없애고 위 굵은 선과 가는 구분선만 남긴다 */
+.card, .panel, .lnb, .menu-cards a { background: transparent; border-left-color: transparent; border-right-color: transparent; border-bottom-color: var(--rule); }
+.card.is-ph { border-bottom-style: solid; }
+h1 { font-weight: 800; letter-spacing: -.02em; }

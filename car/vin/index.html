@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>VIN 확인 · 이웃마루</title>
+<meta name="description" content="VIN 17자리를 붙여 넣으면 형식, 체크 디지트, 제조 지역, 연식 코드를 확인합니다. 입력값은 서버로 보내지 않습니다.">
+<link rel="canonical" href="https://owlmakers.github.io/community/car/vin/">
+<link rel="stylesheet" href="../../assets/style.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="이웃마루">
+<meta property="og:title" content="VIN 확인 · 이웃마루">
+<meta property="og:description" content="VIN 17자리를 붙여 넣으면 형식, 체크 디지트, 제조 지역, 연식 코드를 확인합니다. 입력값은 서버로 보내지 않습니다.">
+<meta property="og:url" content="https://owlmakers.github.io/community/car/vin/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../tools/vin/vin.css"><script src="../../tools/track.js" data-pulse-endpoint="https://api.owlmakers.com/v1/pulse" data-pulse-app="com.owlmakers.community" data-pulse-name="이웃마루 웹" data-pulse-ver="web1" data-pulse-nores="health,parenting" data-respect-dnt="1" defer></script>
+<link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body class="has-lnb">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="../../">이웃마루</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="gnb">메뉴</button>
+  </div>
+  <nav class="gnb" id="gnb" aria-label="주제" data-open="false"><div class="wrap"><ul class="gnb-list"><li><a href="../../car/" aria-current="true">차</a></li><li><a href="../../living/">살림</a></li><li><a href="../../money/">돈</a></li><li><a href="../../health/">건강</a></li><li><a href="../../parenting/">육아·가정</a></li></ul></div></nav>
+</header>
+<div class="wrap shell">
+  <aside class="lnb" id="lnb" aria-label="주제 메뉴"><details class="lnb-d" open><summary class="lnb-title"><span>차 메뉴</span></summary><ul class="lnb-list"><li><a href="../../car/">차 첫 화면</a></li><li><a href="../../car/vin/" aria-current="page">VIN 확인</a></li><li><a href="../../car/tires/">타이어 가이드</a></li><li><a href="../../car/v2l/">내 차 전원 공급</a></li><li><a href="../../car/yl/">앞뒤 사이즈가 다른 차 타이어</a></li><li><a href="../../car/hipass/">하이패스 단말기 설치</a></li><li><a href="../../car/charge/">평소 충전 한도</a></li><li><a href="../../car/update/">소프트웨어 업데이트</a></li><li><a href="../../car/standards/">기준 노트</a></li></ul></details></aside>
+  <script>/* 첫 화면을 그리기 전에 폰 폭이면 좌측 메뉴를 접어 둔다(layout.js 가 나중에 접으면 본문이 밀린다) */(function(){var d=document.querySelector(".lnb-d");if(d&&window.matchMedia("(max-width: 767px)").matches)d.removeAttribute("open");})();</script>
+  <main id="main" class="main" tabindex="-1">
+    <h1>VIN 확인</h1>
+    <div class="vin-tool">
+<p class="lead">VIN(차대번호) 17자리를 붙여 넣으세요. 공백·하이픈은 자동으로 지웁니다.</p>
+<form id="vin-form" autocomplete="off">
+<label for="vin-input">차대번호(VIN) 17자리</label>
+<input class="vin-in" id="vin-input" type="text" inputmode="text" autocapitalize="characters" spellcheck="false" maxlength="40" placeholder="예: 1M8GDM9AXKP042788">
+<div class="vin-btns"><button type="submit">확인</button><button type="button" id="vin-clear">지우기</button></div>
+<p class="vin-note">입력한 값은 이 기기 안에서만 계산하며 저장하거나 보내지 않습니다.</p>
+</form>
+<section id="vin-result" hidden aria-live="polite">
+<ul class="vin-errs" id="vin-errors" hidden></ul>
+<table class="vin-sheet" id="vin-table"><caption hidden>VIN 확인 결과</caption><tbody id="vin-rows"></tbody></table>
+<p class="vin-note">형식과 계산이 맞다는 뜻이며 실제 등록 차량이라는 증명은 아닙니다. 사양·옵션은 읽지 않고, 확신이 없는 항목은 «알 수 없음» 으로 둡니다.</p>
+<p class="vin-note"><b>V2L 은 연식 기준 추정입니다.</b> 2027년형(코드 V)은 하드웨어 탑재로 보도됐고 2026년형(코드 T)은 차마다 다릅니다. 한국 사양은 자료가 엇갈려 확정하지 않았습니다. 실제 가능 여부는 차에 달린 부품(PCS2)이 정하므로 공식 방법으로 확인하세요 — Tesla 부품 카탈로그에서 내 VIN 으로 조회하거나, Tesla 앱의 아웃렛 어댑터 안내를 보세요(앱 쪽이 덜 정확).</p>
+<a class="vin-next" href="../../car/tires/">다음: 타이어 가이드 →</a>
+</section>
+<details>
+<summary>값의 뜻과 확인 방법</summary>
+<h2>연식은 어디서 확인하나요?</h2>
+<p>10번째 자리 문자가 연식 코드입니다. 30년 주기라 같은 코드가 1980년대와 2010년대에 모두 쓰여서, 지금 시점에서 가장 최근 후보를 보여 주고 후보를 함께 적습니다.</p>
+<h2>체크 디지트가 안 맞는다고 나와요</h2>
+<p>9번째 자리는 나머지 16자리로 계산한 검증 값입니다. 북미 판매 차량은 의무이고 그 밖의 지역은 의무가 아니어서 달라도 위조라는 뜻은 아닙니다. 북미 차량인데 다르면 숫자 1·0 을 I·O 로 잘못 읽지 않았는지 확인하세요.</p>
+<h2>형식 오류가 나와요</h2>
+<p>17자리, 영문 대문자와 숫자만 쓰고 I·O·Q 는 쓰지 않습니다.</p>
+</details>
+<p class="vin-note">이 사이트는 공식 사이트가 아니며 특정 제조사와 관련이 없습니다.</p>
+</div>
+  </main>
+</div>
+<footer class="site-footer"><div class="wrap foot-in"><div class="foot-brand"><a href="../../">이웃마루</a><p>이웃이 자주 묻는 것을 기준과 이유로 정리하는 곳</p></div><nav aria-label="주제 바로가기"><h2>주제</h2><ul><li><a href="../../car/">차</a></li><li><a href="../../living/">살림</a></li><li><a href="../../money/">돈</a></li><li><a href="../../health/">건강</a></li><li><a href="../../parenting/">육아·가정</a></li></ul></nav><nav aria-label="사이트 안내"><h2>안내</h2><ul><li><a href="../../about/">사이트 소개</a></li><li><a href="../../privacy/">개인정보 처리방침</a></li><li><a href="../../terms/">이용 안내</a></li></ul></nav></div><div class="wrap foot-end"><small>© 이웃마루</small><small>광고·댓글·로그인 없는 정적 사이트</small></div></footer>
+<script src="../../assets/layout.js" defer></script>
+<script src="../../tools/vin/vin.js" defer></script>
+<script src="../../tools/vin/page.js" defer></script>
+</body>
+</html>

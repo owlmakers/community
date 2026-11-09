@@ -1,0 +1,255 @@
+/* 설문 흐름 — 사이트 토큰(--paper·--sheet·--ink·--body·--meta·--rule·--chip·--accent·--on-accent·--radius·--card-border·--card-top·--font-head·--font-body)만 쓴다. 색을 새로 박지 않는다(파생은 color-mix). 폭은 뷰포트가 아니라 컨테이너(.qz) 기준. */
+.qz { container: qz / inline-size; max-width: 680px; margin: 0 auto; color: var(--body); font: 16px/1.55 var(--font-body); word-break: keep-all; overflow-wrap: break-word; }
+.qz *, .qz *::before, .qz *::after { box-sizing: border-box; }
+.qz-ico { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.qz [hidden] { display: none !important; }
+.qz button { font: inherit; cursor: pointer; }
+.qz-card { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 24px; background: var(--sheet); border: var(--card-border); border-top: var(--card-top); border-radius: var(--radius); }
+
+/* 라벨·제목·메타 */
+.qz-tag { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 10px; font-size: 15px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); border-radius: var(--radius); }
+.qz-tag .qz-ico { font-size: 17px; }
+.qz-title { font: 800 28px/1.3 var(--font-head); color: var(--ink); letter-spacing: -.02em; }
+.qz-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.qz-meta li { display: inline-flex; align-items: center; gap: 6px; font-size: 16px; color: var(--body); }
+.qz-meta .qz-ico { font-size: 20px; color: var(--accent); }
+.qz-meta strong { color: var(--ink); }
+
+/* 유형 배지 — 색이 아니라 모양·채움이 다르다: 원(채움) · 둥근 사각(윤곽) · 육각(먹색 채움) */
+.qz-badge { --s: 64px; width: var(--s); height: var(--s); flex: none; display: grid; place-items: center; }
+.qz-badge .qz-ico { width: 62%; height: 62%; stroke-width: 2.6; }
+.qz-badge[data-type="allweather"], .qz-badge[data-type="v2l-yes"], .qz-badge[data-type="yl-oem"], .qz-badge[data-type="hipass-standard"] { border-radius: 50%; background: var(--accent); color: var(--on-accent); }
+.qz-badge[data-type="allseason"], .qz-badge[data-type="v2l-maybe"], .qz-badge[data-type="yl-same-family"], .qz-badge[data-type="hipass-check"] { border-radius: calc(var(--s) * .28); background: var(--sheet); color: var(--accent); border: max(3px, calc(var(--s) * .06)) solid var(--accent); }
+.qz-badge[data-type="swap"], .qz-badge[data-type="v2l-no"], .qz-badge[data-type="yl-resize"], .qz-badge[data-type="hipass-official"] { background: var(--ink); color: var(--paper); clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%); }
+.qz-types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.qz-type-mini { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 6px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); font-size: 16px; font-weight: 700; color: var(--ink); text-align: center; line-height: 1.3; }
+.qz-type-mini .qz-badge { --s: 52px; }
+
+/* 버튼 */
+.qz-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; font-weight: 700; font-size: 16px; line-height: 1.3; color: var(--ink); background: transparent; border: 1px solid var(--ink); border-radius: var(--radius); text-align: center; }
+.qz-btn:hover { border-color: var(--accent); color: var(--accent); }
+.qz-btn .qz-ico { font-size: 20px; }
+.qz-btn-big { width: 100%; min-height: 60px; font-size: 19px; color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+.qz-btn-big:hover { color: var(--on-accent); filter: brightness(1.08); }
+.qz-btn-cta { min-height: 68px; font-size: 22px; }
+.qz-btn-text { border-color: transparent; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ② 질문 */
+.qz-head { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; margin: -8px 0 -4px; }
+.qz-back { display: inline-flex; align-items: center; gap: 2px; min-height: 44px; min-width: 44px; padding: 0 12px 0 0; background: none; border: 0; color: var(--meta); font-weight: 700; }
+.qz-back:hover { color: var(--ink); }
+.qz-back .qz-ico { font-size: 22px; }
+.qz-back[disabled] { visibility: hidden; }
+.qz-dots { display: flex; justify-content: center; gap: 9px; }
+.qz-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--rule); background: var(--sheet); }
+.qz-dot.is-done { background: var(--accent); border-color: var(--accent); }
+.qz-dot.is-current { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent); }
+.qz-count { font-weight: 800; font-size: 17px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.qz-count span { color: var(--meta); font-weight: 600; }
+.qz-qtext { font: 800 25px/1.35 var(--font-head); color: var(--ink); letter-spacing: -.02em; }
+.qz-opts { display: grid; gap: 10px; }
+.qz-opt { width: 100%; display: grid; grid-template-columns: 34px 1fr 20px; align-items: center; gap: 12px; min-height: 60px; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 17px; line-height: 1.4; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); }
+.qz-opt:hover, .qz-opt:focus-visible { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--paper)); }
+.qz-opt:active, .qz-opt.is-picked { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.qz-opt-n { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--chip); color: var(--ink); font-size: 16px; font-weight: 800; }
+.qz-opt:active .qz-opt-n, .qz-opt.is-picked .qz-opt-n { background: var(--on-accent); color: var(--accent); }
+.qz-opt-go { font-size: 20px; color: var(--meta); }
+.qz-opt:active .qz-opt-go, .qz-opt.is-picked .qz-opt-go { color: var(--on-accent); }
+.qz-why { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; background: var(--chip); border-radius: var(--radius); font-size: 16px; line-height: 1.5; color: var(--body); }
+.qz-why .qz-ico { font-size: 20px; margin-top: 2px; color: var(--accent); }
+.qz-why b { color: var(--ink); margin-right: 4px; }
+
+/* ③ 결과 */
+.qz-top { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; }
+.qz-top .qz-badge { --s: 96px; }
+.qz-kicker { display: block; font-size: 16px; font-weight: 700; color: var(--meta); margin-bottom: 2px; }
+.qz-verdict { font: 800 32px/1.22 var(--font-head); color: var(--ink); letter-spacing: -.02em; }
+.qz-verdict em { font-style: normal; color: var(--accent); }
+.qz-oneline { margin-top: 4px; font-size: 17px; color: var(--body); }
+.qz-reasons { display: grid; gap: 10px; counter-reset: r; }
+.qz-reasons li { counter-increment: r; display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; font-size: 17px; line-height: 1.5; color: var(--ink); }
+.qz-reasons li::before { content: counter(r); display: grid; place-items: center; width: 28px; height: 28px; margin-top: 1px; border: 2px solid var(--accent); border-radius: 50%; font-size: 15px; font-weight: 800; color: var(--accent); }
+.qz-caution { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; background: var(--chip); border-left: 4px solid var(--ink); border-radius: var(--radius); font-size: 16px; line-height: 1.5; color: var(--ink); }
+.qz-caution .qz-ico { font-size: 22px; margin-top: 1px; }
+.qz-caution b { margin-right: 4px; }
+.qz-actions { display: grid; gap: 10px; }
+.qz-sub { display: grid; grid-template-columns: auto 1fr; gap: 10px; }
+
+/* ④ 공유 시트 — 실제는 position:fixed, JS 가 data-form 을 "sheet"(폭 768 미만) / "dialog" 로 정한다. 시안은 .is-inline 으로 틀 안에 가둔다. */
+.qz-sheet-wrap { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; background: color-mix(in srgb, var(--ink) 52%, transparent); }
+.qz-sheet-wrap.is-inline { position: absolute; }
+.qz-sheet-wrap[data-form="dialog"] { align-items: center; }
+.qz-sheet { width: 100%; max-width: 480px; display: grid; gap: 14px; padding: 12px 20px 20px; background: var(--sheet); border-top: var(--card-top); border-radius: 14px 14px 0 0; }
+.qz-sheet-wrap[data-form="dialog"] .qz-sheet { border: var(--card-border); border-top: var(--card-top); border-radius: var(--radius); }
+.qz-sheet-h { display: flex; align-items: center; justify-content: space-between; margin-right: -12px; }
+.qz-sheet-h h2 { font: 800 21px/1.3 var(--font-head); color: var(--ink); }
+.qz-close { display: grid; place-items: center; width: 44px; height: 44px; background: none; border: 0; color: var(--ink); font-size: 24px; }
+.qz-share-prev { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; padding: 10px 12px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); }
+.qz-share-prev .qz-badge { --s: 52px; }
+.qz-share-prev strong { display: block; font-size: 18px; color: var(--ink); line-height: 1.3; }
+.qz-share-prev span { font-size: 16px; color: var(--meta); }
+.qz-link-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.qz-link-row input { min-width: 0; height: 52px; padding: 0 12px; font: inherit; font-size: 16px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); text-overflow: ellipsis; }
+.qz-link-row .qz-btn { min-height: 52px; color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+.qz-link-row .qz-btn.is-done { color: var(--ink); background: var(--chip); border-color: var(--ink); }
+.qz-share-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.qz-share-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 76px; padding: 8px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); font-size: 16px; font-weight: 700; color: var(--ink); }
+.qz-share-item:hover { border-color: var(--accent); color: var(--accent); }
+.qz-share-item .qz-ico { font-size: 28px; }
+
+/* ⑤ 공유 이미지 카드 1200×630 — 글자는 피드 썸네일(폭 500)에서도 읽히게 40px 이상 */
+.qz-og { position: relative; width: 1200px; height: 630px; overflow: hidden; display: grid; grid-template-rows: 1fr auto; padding: 56px 64px 44px; background: var(--sheet); color: var(--ink); font-family: var(--font-body); }
+.qz-og::before { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.qz-og[data-type="allweather"]::before, .qz-og[data-type="v2l-yes"]::before, .qz-og[data-type="yl-oem"]::before, .qz-og[data-type="hipass-standard"]::before { background: repeating-radial-gradient(circle at 108% -8%, transparent 0 70px, color-mix(in srgb, var(--accent) 16%, transparent) 70px 76px); }
+.qz-og[data-type="allseason"]::before, .qz-og[data-type="v2l-maybe"]::before, .qz-og[data-type="yl-same-family"]::before, .qz-og[data-type="hipass-check"]::before { background: repeating-linear-gradient(90deg, transparent 0 84px, color-mix(in srgb, var(--accent) 14%, transparent) 84px 92px); }
+.qz-og[data-type="swap"]::before, .qz-og[data-type="v2l-no"]::before, .qz-og[data-type="yl-resize"]::before, .qz-og[data-type="hipass-official"]::before { background: linear-gradient(112deg, transparent 58%, color-mix(in srgb, var(--ink) 10%, transparent) 58%); }
+.qz-og > * { position: relative; }
+.qz-og-main { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; }
+.qz-og .qz-badge { --s: 300px; }
+.qz-og-kick { font-size: 40px; font-weight: 700; color: var(--meta); line-height: 1.2; }
+.qz-og-name { margin: 6px 0 12px; font: 800 112px/1.02 var(--font-head); letter-spacing: -.03em; color: var(--ink); }
+.qz-og-line { font-size: 46px; font-weight: 600; line-height: 1.3; color: var(--body); }
+.qz-og-foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px; border-top: 4px solid var(--ink); }
+.qz-og-site { font: 800 44px/1 var(--font-head); color: var(--ink); }
+.qz-og-cta { font-size: 40px; font-weight: 800; color: var(--accent); }
+
+/* ⑥ 공유받은 사람의 첫 화면 */
+.qz-from { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 17px; font-weight: 700; color: var(--ink); }
+.qz-from .qz-ico { font-size: 22px; color: var(--accent); }
+.qz-result.is-compact .qz-top .qz-badge { --s: 80px; }
+.qz-result.is-compact .qz-verdict { font-size: 28px; }
+.qz-cta-note { text-align: center; font-size: 16px; color: var(--meta); margin-top: -2px; }
+
+/* 폭이 좁을 때(폰) — 컨테이너 기준 */
+@container qz (max-width: 520px) {
+  .qz-card { padding: 16px; gap: 14px; }
+  .qz-title { font-size: 24px; }
+  .qz-qtext { font-size: 22px; }
+  .qz-top { gap: 14px; }
+  .qz-top .qz-badge { --s: 72px; }
+  .qz-verdict { font-size: 26px; }
+  .qz-result.is-compact .qz-verdict { font-size: 24px; }
+  .qz-result.is-compact .qz-top .qz-badge { --s: 64px; }
+  .qz-reasons li, .qz-oneline { font-size: 16px; }
+  .qz-btn-big { min-height: 58px; font-size: 18px; }
+  .qz-btn-cta { min-height: 64px; font-size: 20px; }
+  .qz-dots { gap: 7px; }
+}
+@media (prefers-reduced-motion: no-preference) { .qz-opt, .qz-btn { transition: background-color .12s, border-color .12s, color .12s; } }
+
+/* ===== 결과 쪽(정적 result/<유형>/) — 렌더러 클래스 result-*·share-*·btn. 시안 ③·⑥ 와 같은 모양(.qz-* 와 한 가족). ===== */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; font: 700 16px/1.3 var(--font-body); color: var(--ink); background: transparent; border: 1px solid var(--ink); border-radius: var(--radius); text-align: center; cursor: pointer; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn-primary { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+.btn-primary:hover { color: var(--on-accent); filter: brightness(1.08); }
+.result-card, .result-cta, .result-share, .result-note, .result-stance { max-width: 680px; word-break: keep-all; overflow-wrap: break-word; }
+.result-card { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 24px 112px 24px 24px; margin-bottom: 12px; background: var(--sheet); border: var(--card-border); border-top: var(--card-top); border-radius: var(--radius); color: var(--body); font-size: 16px; line-height: 1.55; }
+.result-card::before, .result-card::after { content: ""; position: absolute; top: 24px; right: 24px; width: 72px; height: 72px; }
+.result-card::before { border-radius: 50%; background: var(--accent); }
+.result-card::after { background: var(--on-accent); -webkit-mask: var(--g) center / 62% no-repeat; mask: var(--g) center / 62% no-repeat; }
+.result-card[data-result="allweather"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%225%22/%3E%3Cpath d=%22M16 5v3M16 24v3M5 16h3M24 16h3M8.2 8.2l2.1 2.1M21.7 21.7l-2.1-2.1M23.8 8.2l-2.1 2.1M8.2 23.8l2.1-2.1%22/%3E%3Cpath d=%22M30 22v16M22 30h16M24.3 24.3l11.4 11.4M35.7 24.3L24.3 35.7%22/%3E%3C/svg%3E"); }
+.result-card[data-result="allseason"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cellipse cx=%2224%22 cy=%2212.5%22 rx=%225.5%22 ry=%228.5%22 transform=%22rotate%280 24 24%29%22/%3E%3Cellipse cx=%2224%22 cy=%2212.5%22 rx=%225.5%22 ry=%228.5%22 transform=%22rotate%2890 24 24%29%22/%3E%3Cellipse cx=%2224%22 cy=%2212.5%22 rx=%225.5%22 ry=%228.5%22 transform=%22rotate%28180 24 24%29%22/%3E%3Cellipse cx=%2224%22 cy=%2212.5%22 rx=%225.5%22 ry=%228.5%22 transform=%22rotate%28270 24 24%29%22/%3E%3C/svg%3E"); }
+.result-card[data-result="allseason"]::before, .result-card[data-result="v2l-maybe"]::before, .result-card[data-result="yl-same-family"]::before, .result-card[data-result="hipass-check"]::before { border-radius: 20px; background: var(--sheet); border: 4px solid var(--accent); }
+.result-card[data-result="allseason"]::after, .result-card[data-result="v2l-maybe"]::after, .result-card[data-result="yl-same-family"]::after, .result-card[data-result="hipass-check"]::after { background: var(--accent); }
+.result-card[data-result="swap"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M9 21a15 15 0 0 1 27-6%22/%3E%3Cpath d=%22M37 6v10H27%22/%3E%3Cpath d=%22M39 27a15 15 0 0 1-27 6%22/%3E%3Cpath d=%22M11 42V32h10%22/%3E%3C/svg%3E"); }
+.result-card[data-result="swap"]::before, .result-card[data-result="v2l-no"]::before, .result-card[data-result="yl-resize"]::before, .result-card[data-result="hipass-official"]::before { border-radius: 0; background: var(--ink); clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%); }
+.result-card[data-result="swap"]::after, .result-card[data-result="v2l-no"]::after, .result-card[data-result="yl-resize"]::after, .result-card[data-result="hipass-official"]::after { background: var(--paper); }
+.result-kicker { font-size: 16px; font-weight: 700; color: var(--meta); margin-bottom: -10px; }
+.result-name { font: 800 32px/1.22 var(--font-head); letter-spacing: -.02em; color: var(--accent); }
+.result-tagline { font-size: 18px; font-weight: 600; color: var(--ink); margin-top: -6px; }
+.result-reasons { display: grid; gap: 10px; counter-reset: r; }
+.result-reasons li { counter-increment: r; display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; font-size: 17px; line-height: 1.5; color: var(--ink); }
+.result-reasons li::before { content: counter(r); display: grid; place-items: center; width: 28px; height: 28px; margin-top: 1px; border: 2px solid var(--accent); border-radius: 50%; font-size: 15px; font-weight: 800; color: var(--accent); }
+.result-caution { padding: 12px 14px; background: var(--chip); border-left: 4px solid var(--ink); border-radius: var(--radius); font-size: 16px; line-height: 1.5; color: var(--ink); }
+.result-caution::before { content: "주의 "; font-weight: 800; }
+.result-cta { margin: 0 0 12px; }
+.result-cta .btn { width: 100%; min-height: 68px; font-size: 22px; }
+.result-cta .btn::after { content: "›"; font-size: 26px; line-height: 1; }
+.result-share { padding: 16px 20px; margin-bottom: 12px; background: var(--sheet); border: var(--card-border); border-top: var(--card-top); border-radius: var(--radius); }
+.result-share h2 { font: 800 19px/1.3 var(--font-head); color: var(--ink); margin-bottom: 10px; }
+.share-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-row .btn { flex: 1 1 120px; min-height: 48px; }
+.share-native, .share-copy { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+.share-native:hover, .share-copy:hover { color: var(--on-accent); filter: brightness(1.08); }
+.share-field { display: block; width: 100%; min-height: 48px; margin-top: 10px; padding: 0 12px; font: inherit; font-size: 16px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); }
+.share-kakao, .share-status, .result-share .hint { margin-top: 10px; font-size: 16px; line-height: 1.5; color: var(--body); }
+.share-status:empty { display: none; }
+.result-note { margin-bottom: 8px; }
+.result-note a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.result-stance { font-size: 16px; }
+@media (max-width: 520px) {
+  .result-card { padding: 84px 16px 16px; gap: 12px; }
+  .result-card::before, .result-card::after { top: 16px; left: 16px; right: auto; width: 56px; height: 56px; }
+  .result-name { font-size: 26px; }
+  .result-reasons li { font-size: 16px; }
+  .result-cta .btn { min-height: 64px; font-size: 20px; }
+  .result-share { padding: 14px 16px; }
+  .share-row .btn { flex: 1 1 100%; }
+}
+
+/* V2L 설문 — 유형 글리프(결과 쪽 카드). 모양·채움은 위 묶음 선택자가 정한다 */
+.result-card[data-result="v2l-yes"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M27 5L11 27h12l-2 16 16-23H25z%22/%3E%3C/svg%3E"); }
+.result-card[data-result="v2l-maybe"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M17 6v10M31 6v10M12 16h24v6a12 12 0 0 1-24 0zM24 34v8%22/%3E%3C/svg%3E"); }
+.result-card[data-result="v2l-no"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M27 5L11 27h12l-2 16 16-23H25z%22/%3E%3Cpath d=%22M6 6l36 36%22/%3E%3C/svg%3E"); }
+/* 앞뒤 사이즈 설문 — 유형 글리프 */
+.result-card[data-result="yl-oem"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22/%3E%3Cpath d=%22M15 24l6 6 12-13%22/%3E%3C/svg%3E"); }
+.result-card[data-result="yl-same-family"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2217%22 cy=%2224%22 r=%2211%22/%3E%3Ccircle cx=%2231%22 cy=%2224%22 r=%2211%22/%3E%3C/svg%3E"); }
+.result-card[data-result="yl-resize"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M8 40L40 8M28 8h12v12M20 40H8V28%22/%3E%3C/svg%3E"); }
+.result-other { max-width: 680px; margin-top: 16px; }
+.result-other .btn { width: 100%; text-align: left; justify-content: space-between; }
+.result-card[data-result="hipass-standard"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%227%22 y=%2213%22 width=%2234%22 height=%2222%22 rx=%224%22/%3E%3Cpath d=%22M16 24l6 6 11-12%22/%3E%3C/svg%3E"); }
+.result-card[data-result="hipass-check"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2221%22 cy=%2221%22 r=%2212%22/%3E%3Cpath d=%22M30 30l11 11%22/%3E%3C/svg%3E"); }
+.result-card[data-result="hipass-official"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22/%3E%3Cpath d=%22M24 13v11l7 5%22/%3E%3C/svg%3E"); }
+/* 설문 확장(2026-11-09): 살림·돈·건강·육아·가정·차 충전 설문 15개 유형 — 모양 3종(원·둥근 사각·육각) 반복 */
+.qz-badge[data-type="charge-manual"], .qz-badge[data-type="pad-timer"], .qz-badge[data-type="scaling-done"], .qz-badge[data-type="tax-settle"], .qz-badge[data-type="parenting-full"] { border-radius: 50%; background: var(--accent); color: var(--on-accent); }
+.qz-badge[data-type="charge-mix"], .qz-badge[data-type="pad-preheat"], .qz-badge[data-type="scaling-year-end"], .qz-badge[data-type="tax-refund"], .qz-badge[data-type="parenting-split"] { border-radius: calc(var(--s) * .28); background: var(--sheet); color: var(--accent); border: max(3px, calc(var(--s) * .06)) solid var(--accent); }
+.qz-badge[data-type="charge-full"], .qz-badge[data-type="pad-keepon"], .qz-badge[data-type="scaling-gentle"], .qz-badge[data-type="tax-out"], .qz-badge[data-type="parenting-short"] { background: var(--ink); color: var(--paper); clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%); }
+.qz-og[data-type="charge-manual"]::before, .qz-og[data-type="pad-timer"]::before, .qz-og[data-type="scaling-done"]::before, .qz-og[data-type="tax-settle"]::before, .qz-og[data-type="parenting-full"]::before { background: repeating-radial-gradient(circle at 108% -8%, transparent 0 70px, color-mix(in srgb, var(--accent) 16%, transparent) 70px 76px); }
+.qz-og[data-type="charge-mix"]::before, .qz-og[data-type="pad-preheat"]::before, .qz-og[data-type="scaling-year-end"]::before, .qz-og[data-type="tax-refund"]::before, .qz-og[data-type="parenting-split"]::before { background: repeating-linear-gradient(90deg, transparent 0 84px, color-mix(in srgb, var(--accent) 14%, transparent) 84px 92px); }
+.qz-og[data-type="charge-full"]::before, .qz-og[data-type="pad-keepon"]::before, .qz-og[data-type="scaling-gentle"]::before, .qz-og[data-type="tax-out"]::before, .qz-og[data-type="parenting-short"]::before { background: linear-gradient(112deg, transparent 58%, color-mix(in srgb, var(--ink) 10%, transparent) 58%); }
+.result-card[data-result="charge-mix"]::before, .result-card[data-result="pad-preheat"]::before, .result-card[data-result="scaling-year-end"]::before, .result-card[data-result="tax-refund"]::before, .result-card[data-result="parenting-split"]::before { border-radius: 20px; background: var(--sheet); border: 4px solid var(--accent); }
+.result-card[data-result="charge-mix"]::after, .result-card[data-result="pad-preheat"]::after, .result-card[data-result="scaling-year-end"]::after, .result-card[data-result="tax-refund"]::after, .result-card[data-result="parenting-split"]::after { background: var(--accent); }
+.result-card[data-result="charge-full"]::before, .result-card[data-result="pad-keepon"]::before, .result-card[data-result="scaling-gentle"]::before, .result-card[data-result="tax-out"]::before, .result-card[data-result="parenting-short"]::before { border-radius: 0; background: var(--ink); clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%); }
+.result-card[data-result="charge-full"]::after, .result-card[data-result="pad-keepon"]::after, .result-card[data-result="scaling-gentle"]::after, .result-card[data-result="tax-out"]::after, .result-card[data-result="parenting-short"]::after { background: var(--paper); }
+.result-card[data-result="charge-manual"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%227%22 y=%2215%22 width=%2230%22 height=%2218%22 rx=%223%22/%3E%3Cpath d=%22M37 21h4v6h-4M15 24l5 5 9-10%22/%3E%3C/svg%3E"); }
+.result-card[data-result="charge-mix"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%227%22 y=%2215%22 width=%2230%22 height=%2218%22 rx=%223%22/%3E%3Cpath d=%22M37 21h4v6h-4M14 21v6M20 21v6%22/%3E%3C/svg%3E"); }
+.result-card[data-result="charge-full"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%227%22 y=%2215%22 width=%2230%22 height=%2218%22 rx=%223%22/%3E%3Cpath d=%22M37 21h4v6h-4M24 18l-5 7h8l-5 7%22/%3E%3C/svg%3E"); }
+.result-card[data-result="pad-timer"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2224%22 cy=%2227%22 r=%2214%22/%3E%3Cpath d=%22M24 19v8l5 3M20 7h8%22/%3E%3C/svg%3E"); }
+.result-card[data-result="pad-preheat"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M14 38c3-4 3-8 0-12s-3-8 0-12M24 38c3-4 3-8 0-12s-3-8 0-12M34 38c3-4 3-8 0-12s-3-8 0-12%22/%3E%3C/svg%3E"); }
+.result-card[data-result="pad-keepon"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M24 7v16M14 14a14 14 0 1 0 20 0%22/%3E%3C/svg%3E"); }
+.result-card[data-result="scaling-done"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%227%22 y=%2211%22 width=%2234%22 height=%2229%22 rx=%223%22/%3E%3Cpath d=%22M7 20h34M16 7v8M32 7v8M17 30l5 5 10-11%22/%3E%3C/svg%3E"); }
+.result-card[data-result="scaling-year-end"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%227%22 y=%2211%22 width=%2234%22 height=%2229%22 rx=%223%22/%3E%3Cpath d=%22M7 20h34M16 7v8M32 7v8M15 30h5M28 30h5%22/%3E%3C/svg%3E"); }
+.result-card[data-result="scaling-gentle"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M15 8c-4 0-7 3-7 8 0 6 3 8 4 13 1 6 2 11 5 11s3-8 7-8 4 8 7 8 4-5 5-11c1-5 4-7 4-13 0-5-3-8-7-8-3 0-5 2-9 2s-6-2-9-2z%22/%3E%3C/svg%3E"); }
+.result-card[data-result="tax-settle"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M12 6h18l8 8v28H12zM30 6v8h8M18 24h14M18 31h14%22/%3E%3C/svg%3E"); }
+.result-card[data-result="tax-refund"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22/%3E%3Cpath d=%22M24 33V16M17 23l7-7 7 7%22/%3E%3C/svg%3E"); }
+.result-card[data-result="tax-out"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22/%3E%3Cpath d=%22M15 24h18%22/%3E%3C/svg%3E"); }
+.result-card[data-result="parenting-full"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M24 40S7 30 7 19a8 8 0 0 1 17-3 8 8 0 0 1 17 3c0 11-17 21-17 21z%22/%3E%3C/svg%3E"); }
+.result-card[data-result="parenting-split"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M7 14h15v20H7zM26 14h15v20H26z%22/%3E%3C/svg%3E"); }
+.result-card[data-result="parenting-short"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M7 22L24 8l17 14M12 20v20h24V20M20 40V28h8v12%22/%3E%3C/svg%3E"); }
+
+/* 설문 확장 2(2026-11-09): 소프트웨어 업데이트·독감·목돈 보호·카시트·남은 음식 15개 유형 — 모양 3종(원·둥근 사각·육각) 반복 */
+.qz-badge[data-type="upd-now"], .qz-badge[data-type="flu-regular"], .qz-badge[data-type="dep-split"], .qz-badge[data-type="seat-keep"], .qz-badge[data-type="lo-quick"] { border-radius: 50%; background: var(--accent); color: var(--on-accent); }
+.qz-badge[data-type="upd-plan"], .qz-badge[data-type="flu-missed"], .qz-badge[data-type="dep-safe"], .qz-badge[data-type="seat-minimum"], .qz-badge[data-type="lo-cool"] { border-radius: calc(var(--s) * .28); background: var(--sheet); color: var(--accent); border: max(3px, calc(var(--s) * .06)) solid var(--accent); }
+.qz-badge[data-type="upd-hold"], .qz-badge[data-type="flu-check"], .qz-badge[data-type="dep-check"], .qz-badge[data-type="seat-flex"], .qz-badge[data-type="lo-smell"] { background: var(--ink); color: var(--paper); clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%); }
+.qz-og[data-type="upd-now"]::before, .qz-og[data-type="flu-regular"]::before, .qz-og[data-type="dep-split"]::before, .qz-og[data-type="seat-keep"]::before, .qz-og[data-type="lo-quick"]::before { background: repeating-radial-gradient(circle at 108% -8%, transparent 0 70px, color-mix(in srgb, var(--accent) 16%, transparent) 70px 76px); }
+.qz-og[data-type="upd-plan"]::before, .qz-og[data-type="flu-missed"]::before, .qz-og[data-type="dep-safe"]::before, .qz-og[data-type="seat-minimum"]::before, .qz-og[data-type="lo-cool"]::before { background: repeating-linear-gradient(90deg, transparent 0 84px, color-mix(in srgb, var(--accent) 14%, transparent) 84px 92px); }
+.qz-og[data-type="upd-hold"]::before, .qz-og[data-type="flu-check"]::before, .qz-og[data-type="dep-check"]::before, .qz-og[data-type="seat-flex"]::before, .qz-og[data-type="lo-smell"]::before { background: linear-gradient(112deg, transparent 58%, color-mix(in srgb, var(--ink) 10%, transparent) 58%); }
+.result-card[data-result="upd-plan"]::before, .result-card[data-result="flu-missed"]::before, .result-card[data-result="dep-safe"]::before, .result-card[data-result="seat-minimum"]::before, .result-card[data-result="lo-cool"]::before { border-radius: 20px; background: var(--sheet); border: 4px solid var(--accent); }
+.result-card[data-result="upd-plan"]::after, .result-card[data-result="flu-missed"]::after, .result-card[data-result="dep-safe"]::after, .result-card[data-result="seat-minimum"]::after, .result-card[data-result="lo-cool"]::after { background: var(--accent); }
+.result-card[data-result="upd-hold"]::before, .result-card[data-result="flu-check"]::before, .result-card[data-result="dep-check"]::before, .result-card[data-result="seat-flex"]::before, .result-card[data-result="lo-smell"]::before { border-radius: 0; background: var(--ink); clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0 50%); }
+.result-card[data-result="upd-hold"]::after, .result-card[data-result="flu-check"]::after, .result-card[data-result="dep-check"]::after, .result-card[data-result="seat-flex"]::after, .result-card[data-result="lo-smell"]::after { background: var(--paper); }
+.result-card[data-result="upd-now"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M24 8v22M15 22l9 9 9-9M10 40h28%22/%3E%3C/svg%3E"); }
+.result-card[data-result="upd-plan"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M13 8h22M13 40h22M15 8c0 10 9 10 9 16s-9 6-9 16M33 8c0 10-9 10-9 16s9 6 9 16%22/%3E%3C/svg%3E"); }
+.result-card[data-result="upd-hold"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M17 10v28M31 10v28%22/%3E%3C/svg%3E"); }
+.result-card[data-result="flu-regular"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M24 6l15 6v11c0 10-7 16-15 19C16 39 9 33 9 23V12zM17 24l5 5 9-10%22/%3E%3C/svg%3E"); }
+.result-card[data-result="flu-missed"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22/%3E%3Cpath d=%22M24 14v13M24 33v1%22/%3E%3C/svg%3E"); }
+.result-card[data-result="flu-check"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M12 6h24v36H12zM19 16h10M19 24h10M19 32h6%22/%3E%3C/svg%3E"); }
+.result-card[data-result="dep-split"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M24 8v14M24 22L12 38M24 22l12 16%22/%3E%3C/svg%3E"); }
+.result-card[data-result="dep-safe"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%2211%22 y=%2221%22 width=%2226%22 height=%2219%22 rx=%223%22/%3E%3Cpath d=%22M17 21v-6a7 7 0 0 1 14 0v6%22/%3E%3C/svg%3E"); }
+.result-card[data-result="dep-check"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M12 6h18l8 8v28H12zM30 6v8h8M18 30l4 4 8-9%22/%3E%3C/svg%3E"); }
+.result-card[data-result="seat-keep"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2224%22 cy=%2213%22 r=%226%22/%3E%3Cpath d=%22M12 42v-8a12 12 0 0 1 24 0v8M17 25l14 14%22/%3E%3C/svg%3E"); }
+.result-card[data-result="seat-minimum"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M8 30h32M8 30v-8M16 30v-5M24 30v-8M32 30v-5M40 30v-8%22/%3E%3C/svg%3E"); }
+.result-card[data-result="seat-flex"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M8 24c6-10 10-10 16 0s10 10 16 0%22/%3E%3C/svg%3E"); }
+.result-card[data-result="lo-quick"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M10 18h28l-3 22H13zM8 18h32M17 12h14%22/%3E%3C/svg%3E"); }
+.result-card[data-result="lo-cool"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M24 6v36M8 15l32 18M8 33l32-18%22/%3E%3C/svg%3E"); }
+.result-card[data-result="lo-smell"] { --g: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2224%22 cy=%2224%22 r=%2217%22/%3E%3Cpath d=%22M19 20a5 5 0 1 1 7 4.5c-2 1-2 2-2 4M24 34v1%22/%3E%3C/svg%3E"); }
